@@ -1,0 +1,19 @@
+{
+  ".env.example": "6a1e05452dd30bfa4a1245bdda5437372b0402de5e930b1c5917e7187db9cb9e",
+  ".gitignore": "5f170afa10ce5eedd6ea4b81254ef445ea9aed71b04e32b5df2a14e8edf0a553",
+  "README.md": "f78716db7f74eedd17ab41d292d621e2c177b2ef649542a18cada691ce3aa12a",
+  "VALIDATION.txt": "f7b3ae4a0932b8cd3a7922c4f1afddc898f5e4ab9f8403f25ceca5e0fb9c0472",
+  "fixtures/demo/policy.js": "d19d17a9a904d18efa450b5728693ab2918f01584e4684f07447aee63434338b",
+  "fixtures/demo/repository.js": "d32cd3c48b1fc145b553a0b899db5ab51ee0e6a264f77933d90dd31185b8d2a1",
+  "fixtures/demo/route-fixed.js": "56492150b48e0460bcb6ac2cd7972d520eca3e7ca8df0489042218e0a6da8779",
+  "fixtures/demo/route.js": "a7bee5554c2f1dee85ae77a25f8c20d4fb9b7b43d726f6f5f745df6744b325d2",
+  "package.json": "3311fc58cd2486add264c50e5d92998afc6a81d153dbd285f11fa0eb2dfff489",
+  "scripts/check-contexts.mjs": "a1a5885b00ff318dfebf8aa41101957e45fd5290b537e536feafcdc224c904f8",
+  "scripts/run-demo.mjs": "2e1603b111355b3f11fe784b7edaa0381fcfe45c382fed567a9d83e46f904769",
+  "src/agents.mjs": "bd1a4e906b81284d326d991372161c5e033b5b72fca5dc2425f534dc34b1c85a",
+  "src/context.mjs": "eeeabc5641fd0bc031ac937dff541f234d62ae48e16454f590db2b8e14d113c7",
+  "src/model.mjs": "a69d74f752b2efcb20b2982b84470759b2cff6bcbfff871eaf60277242d54f68",
+  "src/verification.mjs": "ef9108641ee030492e1a3bbed389da2834f05b8c3d9e785b73e2c364abc5285f",
+  "tests/authorization.test.mjs": "18bc5767ba7c5551f15741e76a176b063c51290247ba143c88bd5654fa8b787b",
+  "tests/policy.test.mjs": "c1bdba87b6f3175120c45fc49a41ef62ca17deda9551e3b2ab71e0411e550606"
+}

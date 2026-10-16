@@ -1,0 +1,54 @@
+Checkpoint 6 reconstruction validation
+Node runtime: v24.19.0
+
+$ node --test
+✔ Original: reproduces cross-tenant document disclosure (0.815595ms)
+✔ Original: reproduces document disclosure without a user (0.1532ms)
+✔ Fixed: same-tenant access succeeds (0.207932ms)
+✔ Fixed: cross-tenant access is denied without document data (0.809466ms)
+✔ Fixed: unauthenticated access is denied (0.174402ms)
+✔ Fixed: unknown document returns 404 (0.141923ms)
+✔ Fixed: user without a tenant is denied (0.109905ms)
+✔ Policy: matching valid tenants are allowed (0.855065ms)
+✔ Policy: different tenants are denied (0.257697ms)
+✔ Policy: missing tenant IDs on both objects are denied (0.109775ms)
+✔ Policy: invalid tenant IDs are denied even when equal (0.156535ms)
+✔ Policy: missing user or document is denied without throwing (0.116175ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 109.991276
+
+$ node scripts/check-contexts.mjs
+┌─────────┬────────────────┬──────────────────────────────────────┬────────────────────────────┬────────────────┬────────────────┐
+│ (index) │ agent          │ files                                │ receives                   │ promptHash     │ contextHash    │
+├─────────┼────────────────┼──────────────────────────────────────┼────────────────────────────┼────────────────┼────────────────┤
+│ 0       │ 'investigator' │ 'route.js, repository.js'            │ '(initial task)'           │ '5f068a17f611' │ 'aa7411a0adde' │
+│ 1       │ 'challenger'   │ 'route.js, policy.js'                │ 'investigator'             │ 'cef696f3d696' │ 'b5ddf076cf8b' │
+│ 2       │ 'reporter'     │ 'route.js, repository.js, policy.js' │ 'investigator, challenger' │ '1af464bc05fb' │ '6a292a10a01a' │
+└─────────┴────────────────┴──────────────────────────────────────┴────────────────────────────┴────────────────┴────────────────┘
+PASS: Three distinct prompts and source contexts.
+PASS: Handoff configuration and dependency order are valid.
+Full assignments saved to: /workspace/scratch/d2c65fd3986c/checkpoint6/SwarmAudit100/runs/context-check-1792137404069
+No models called. Agent collaboration has not yet been executed.
+
+$ node --input-type=module -e import { collectVerification } from "./src/verification.mjs"; const e = await collectVerification(); console.table(e.counts); console.log({passed:e.passed,sourcesUnchanged:e.sourcesUnchanged}); if (!e.passed || e.counts.tests !== 12) process.exitCode=1;
+┌───────────┬────────┐
+│ (index)   │ Values │
+├───────────┼────────┤
+│ tests     │ 12     │
+│ pass      │ 12     │
+│ fail      │ 0      │
+│ cancelled │ 0      │
+│ skipped   │ 0      │
+│ todo      │ 0      │
+└───────────┴────────┘
+{ passed: true, sourcesUnchanged: true }
+
+All application JS/MJS files passed node --check.
+
+Mock transport integration check: PASS. Three sequential calls; exact peer outputs and source provenance; twelve-test evidence supplied only to challenger and reporter; report and events saved. No real API calls.
